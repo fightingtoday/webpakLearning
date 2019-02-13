@@ -1,5 +1,5 @@
 let str = require('./a.js')
-
+require('@babel/polyfill')
 console.log(str)
 require('./index.css')
 require('./index.less')
@@ -19,3 +19,5 @@ console.log(b.a)
 function log (target) {
     console.log(target)
 }
+
+a.includes('s')

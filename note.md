@@ -37,4 +37,7 @@
 ## js高级语法转为es5
   - npm i babel-loader @babel/core @babel/preset-env -D （基本的es6转化为es5）
   - npm i @babel/plugin-proposal-class-properties @babel/plugin-proposal-decorators -D （class以及装饰类的语法转化包）
+  - npm i @babel/runtime
+  - npm i @babel/plugin-transform-runtime -D (抽取js公共部分)
+  - npm i @babel/polyfill (补丁实现js高级语法)
 

@@ -55,10 +55,13 @@ module.exports = {
               ],
               plugins: [
                 ["@babel/plugin-proposal-decorators", { "legacy": true }],
-                ["@babel/plugin-proposal-class-properties", { "loose" : true }]
+                ["@babel/plugin-proposal-class-properties", { "loose" : true }],
+                ["@babel/plugin-transform-runtime"] // 提取公共部分
               ]
             }
-          }
+          },
+          include: path.resolve(__dirname, 'src'),
+          exclude: /node_modules/
         },
         // 规则 css-loader 解析@import这种语法
           // style-loader是把css插入到head的标签中
