@@ -21,7 +21,7 @@ module.exports = {
         new OptimizeCss() // 压缩css
       ]
     },
-    mode: 'development', //默认两种 production development
+    mode: 'production', //默认两种 production development
     entry: './src/index.js', //入口
     output: {
       filename: 'bundle[hash:8].js', // 打包后的文件名,加入hash值只显示8位
@@ -44,23 +44,7 @@ module.exports = {
     ],
     module: { // 模块
       // loder
-      rules:[ 
-        {
-          test: /.js$/,
-          use:{
-            loader: 'babel-loader',
-            options: {
-              presets:[
-                '@babel/preset-env' // es6转换为es5
-              ],
-              plugins: [
-                ["@babel/plugin-proposal-decorators", { "legacy": true }],
-                ["@babel/plugin-proposal-class-properties", { "loose" : true }]
-              ]
-            }
-          }
-        },
-        // 规则 css-loader 解析@import这种语法
+      rules:[ // 规则 css-loader 解析@import这种语法
           // style-loader是把css插入到head的标签中
           // loader的特点 希望单一
           // 多个loader 需要[]
