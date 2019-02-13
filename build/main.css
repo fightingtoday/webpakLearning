@@ -1,10 +1,1 @@
-body {
-  color: yellow
-}
-body {
-background: red
-}
-body div {
-  border: 1px solid #dadada;
-}
-
+body{color:#ff0;background:red;-webkit-transform:rotate(45deg);transform:rotate(45deg)}body div{border:1px solid #dadada}

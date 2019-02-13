@@ -2,6 +2,8 @@
 let path = require('path')
 let HtmlWebpackPlugin = require('html-webpack-plugin')
 let MiniCssExtractPlugin = require('mini-css-extract-plugin')
+let OptimizeCss = require('optimize-css-assets-webpack-plugin')
+let UglifyjsPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
     devServer: { // 开发服务器的配置
         port: 8888,
@@ -9,7 +11,17 @@ module.exports = {
         contentBase: './build',
         compress: true
     },
-    mode: 'development', //默认两种 production development
+    optimization: { //优化项
+      minimizer: [
+        new UglifyjsPlugin({
+          cache: true, // 使用缓存
+          parallel:true, // 可同时压缩多个
+          sourceMap: true //源码映射方便调试
+        }),
+        new OptimizeCss() // 压缩css
+      ]
+    },
+    mode: 'production', //默认两种 production development
     entry: './src/index.js', //入口
     output: {
       filename: 'bundle[hash:8].js', // 打包后的文件名,加入hash值只显示8位
@@ -41,8 +53,9 @@ module.exports = {
         {
             test: /\.css$/, 
             use: [
-              MiniCssExtractPlugin.loader,
-              'css-loader'
+              MiniCssExtractPlugin.loader,             
+              'css-loader',
+              'postcss-loader', //加浏览器前缀
             ]
         },
         // 可以处理less, (同理 sass -> node-sass sass-loader, stylus -> stylus-loader)
@@ -51,7 +64,8 @@ module.exports = {
             use: [
               MiniCssExtractPlugin.loader,
               'css-loader',
-              'less-loader' // 把less -> css
+              'less-loader', // 把less -> css
+              'postcss-loader', //加浏览器前缀
             ]
         }
       ]

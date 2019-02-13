@@ -29,4 +29,9 @@
 
   npm i mini-css-extract-plugin -D  (样式抽离插件，将样式抽离放在<link>标签中，避免直接放在style中造成加载堵塞)
 
+  npm i postcss-loader autoprefixer (增加浏览器前缀)
+
+  npm i optimize-css-assets-webpack-plugin (webpack优化项 压缩css)
+  npm i uglifyjs-webpack-plugin (webpack优化项 js 默认情况是压缩js的但是若配置了optimization就得使用这个插件压缩js)
+
 
