@@ -6,7 +6,7 @@ let OptimizeCss = require('optimize-css-assets-webpack-plugin')
 let UglifyjsPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
     devServer: { // 开发服务器的配置
-        port: 8888,
+        port: 8182,
         progress: true,
         contentBase: './build',
         compress: true
@@ -45,6 +45,15 @@ module.exports = {
     module: { // 模块
       // loder
       rules:[ 
+        // {
+        //   test: /\.js$/,
+        //   use: {
+        //     loader: 'eslint-loader',
+        //     options: {
+        //       enforce: 'pre'  // 强制提前执行（本来是从下到上执行的）
+        //     }
+        //   }
+        // },
         {
           test: /.js$/,
           use:{

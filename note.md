@@ -41,3 +41,7 @@
   - npm i @babel/plugin-transform-runtime -D (抽取js公共部分)
   - npm i @babel/polyfill (补丁实现js高级语法)
 
+## 代码校验eslint
+- npm i eslint eslint-loader -D
+- 配置eslint校验，以及增加eslint配置文件(此次未添加)
+
