@@ -4,6 +4,7 @@ let HtmlWebpackPlugin = require('html-webpack-plugin')
 let MiniCssExtractPlugin = require('mini-css-extract-plugin')
 let OptimizeCss = require('optimize-css-assets-webpack-plugin')
 let UglifyjsPlugin = require('uglifyjs-webpack-plugin')
+let webpack = require('webpack')
 module.exports = {
     devServer: { // 开发服务器的配置
         port: 8182,
@@ -40,11 +41,22 @@ module.exports = {
       }),
       new MiniCssExtractPlugin({
           filrname: 'main.css'
-      })
+      }),
+      new webpack.ProvidePlugin({ // 在每个模块中都注入$，全局没有
+        $: 'jquery'
+      }),
+      // external({ // 表示jquery 是从第三方js引入的，不需要在打包
+      //   jquery: '$'
+      // })
     ],
     module: { // 模块
       // loder
-      rules:[ 
+      rules:[
+        // 将$暴露到全局
+        // {
+        //   test: require.resolve('jquery'),
+        //   use: 'expose-loader?$'
+        // }, 
         // {
         //   test: /\.js$/,
         //   use: {

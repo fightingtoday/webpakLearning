@@ -45,3 +45,13 @@
 - npm i eslint eslint-loader -D
 - 配置eslint校验，以及增加eslint配置文件(此次未添加)
 
+##全局变量引用问题
+- 1） expose-loader 暴露到window上
+
+ npm i expose-loader -D
+ webpack配置文件中增加 {
+          test: require.resolve('jquery'),
+          use: 'expose-loader?$'
+        }, 
+- 2） providePlugin 给每个模块提供一个$（以引入jquery为例）
+- 3） 在index.html中引入jquery，然后页面使用 import $ from 'jquery'(引用不打包)
