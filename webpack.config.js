@@ -33,7 +33,12 @@ module.exports = {
     // devtool: 'eval-source-map', //不会产生单独的文件,可以显示行和列
     // devtool: 'cheap-module-source-map', //不会产生列，但是是一个单独的映射文件，用的不多
     // devtool: 'cheap-module-eval-source-map', //不会产生文件，集成在打包文件中，不会产生列
-
+    watch: true, //实时编译
+    watchOptions: {
+      poll: 1000, //每秒问我1000次
+      aggregateTimeout: 500, //防抖，输入代码完成后500ms开始打包
+      ignored: /node_modules/ //不需要监控哪个文件
+    },
     // 插件的使用顺序没有先后
     plugins: [
       new HtmlWebpackPlugin({ // 根据./index.html模版生成打包目录下的index.html，并自动注入bundle.js
@@ -85,7 +90,7 @@ module.exports = {
             options: {
               limit: 1,
               outputPath: '/img/',
-              publicPath: 'http:www.zhuf.cn' //只在图片下加
+              // publicPath: 'http:www.zhuf.cn' //只在图片下加
             }       
           }
         },
