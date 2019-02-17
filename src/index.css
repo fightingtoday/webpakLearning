@@ -1,5 +1,10 @@
 @import './a.css';
 body {
 background: red;
-transform: rotate(45deg)
+transform: rotate(45deg);
+background: url('./404bg.png') no-repeat;
+}
+
+div {
+    width:100px;
 }

@@ -55,3 +55,9 @@
         }, 
 - 2） providePlugin 给每个模块提供一个$（以引入jquery为例）
 - 3） 在index.html中引入jquery，然后页面使用 import $ from 'jquery'(引用不打包)
+
+## webpack打包图片
+- 1）在js中创建图片来引入 npm i file-loader
+- 2）css中引入
+- 3）html中src引入 npm i html-withimg-loader
+- 4) 将图片转换成base64 npm i url-loader
