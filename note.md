@@ -70,3 +70,8 @@
 - devtool: 'eval-source-map', //不会产生单独的文件,可以显示行和列
 - devtool: 'cheap-module-source-map', //不会产生列，但是是一个单独的映射文件，用的不多
 - devtool: 'cheap-module-eval-source-map', //不会产生文件，集成在打包文件中，不会产生列
+
+## webpack小插件应用
+- 1）cleanWebpackPlugin （第三方） // 每次打包的时候清空输出文件夹（build文件夹）
+- 2) copyWebpackPlugin（第三方） // 进行文件复制
+- 3) bannerPlugin (webpack内置) // 版权声明插件

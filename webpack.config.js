@@ -4,6 +4,8 @@ let HtmlWebpackPlugin = require('html-webpack-plugin')
 let MiniCssExtractPlugin = require('mini-css-extract-plugin')
 let OptimizeCss = require('optimize-css-assets-webpack-plugin')
 let UglifyjsPlugin = require('uglifyjs-webpack-plugin')
+let CleanWebpackPlugin = require('clean-webpack-plugin')
+let CopyWebpackPlugin = require('copy-webpack-plugin')
 let webpack = require('webpack')
 module.exports = {
     devServer: { // 开发服务器的配置
@@ -56,6 +58,11 @@ module.exports = {
       new webpack.ProvidePlugin({ // 在每个模块中都注入$，全局没有
         $: 'jquery'
       }),
+      new CleanWebpackPlugin ('./build'),
+      new CopyWebpackPlugin ([
+        {from: './doc', to:'./'}
+      ]),
+      new webpack.BannerPlugin('make 2019 bu wangcui')
       // external({ // 表示jquery 是从第三方js引入的，不需要在打包
       //   jquery: '$'
       // })

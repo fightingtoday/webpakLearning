@@ -1,3 +1,4 @@
+/*! mack 2019 bu wangcui */
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -86,14 +87,14 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/a.js":
-/*!******************!*\
-  !*** ./src/a.js ***!
-  \******************/
+/***/ "./src/404bg.png":
+/*!***********************!*\
+  !*** ./src/404bg.png ***!
+  \***********************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = 'wangcui';\n\n//# sourceURL=webpack:///./src/a.js?");
+module.exports = __webpack_require__.p + "/img/daf730901e3e0b722cfc97c14777642d.png";
 
 /***/ }),
 
@@ -104,7 +105,7 @@ eval("module.exports = 'wangcui';\n\n//# sourceURL=webpack:///./src/a.js?");
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/index.css?");
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -112,22 +113,45 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("var str = __webpack_require__(/*! ./a.js */ \"./src/a.js\");\n\nconsole.log(str);\n\n__webpack_require__(/*! ./index.css */ \"./src/index.css\");\n\n__webpack_require__(/*! ./index.less */ \"./src/index.less\");\n\nvar a = function a() {\n  return 2;\n};\n\n//# sourceURL=webpack:///./src/index.js?");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _404bg_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./404bg.png */ "./src/404bg.png");
+/* harmony import */ var _404bg_png__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_404bg_png__WEBPACK_IMPORTED_MODULE_0__);
+// webpack打包我们的图片
+// 1）在js中引入
+// file-loader默认会在内部生成一张图片放在build目录下
+ // 把图片引入，饭回的结果是一个新的图片地址
 
-/***/ }),
+var image = new Image();
+image.src = _404bg_png__WEBPACK_IMPORTED_MODULE_0___default.a;
+document.body.appendChild(image); // import $ from "jquery"
+// console.log($)
+// let str = require('./a.js')
+// require('@babel/polyfill')
+// console.log(str)
 
-/***/ "./src/index.less":
-/*!************************!*\
-  !*** ./src/index.less ***!
-  \************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+__webpack_require__(/*! ./index.css */ "./src/index.css");
 
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/index.less?");
+console.log(111); // require('./index.less')
+// let a = () => {
+//     return 2
+// }
+// console.log(a())
+// @log
+// class A {
+//     a=1
+// }
+// let b = new A();
+// console.log(b.a)
+// function log (target) {
+//     console.log(target)
+// }
+// a.includes('s')
 
 /***/ })
 
 /******/ });
+//# sourceMappingURL=bundle1ac27977.js.map

@@ -1,3 +1,4 @@
+/*! mack 2019 bu wangcui */
 body {
   color: yellow
 }
@@ -5,7 +6,7 @@ body {
 background: red;
 -webkit-transform: rotate(45deg);
         transform: rotate(45deg);
-background: url(http:www.zhuf.cn/daf730901e3e0b722cfc97c14777642d.png) no-repeat;
+background: url(/img/daf730901e3e0b722cfc97c14777642d.png) no-repeat;
 }
 
 div {
