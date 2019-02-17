@@ -15,6 +15,7 @@ document.body.appendChild(image)
 // require('@babel/polyfill')
 // console.log(str)
 require('./index.css')
+console.log(111)
 // require('./index.less')
 // let a = () => {
 //     return 2

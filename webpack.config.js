@@ -29,6 +29,11 @@ module.exports = {
       path: path.resolve(__dirname, 'build'), // 路径必须是觉得路径
       // publicPath: 'http://www.zhufengpeixun.cn' //资源都会放在publicPath下，可用于将资源放在cdn下
     },
+    devtool: 'source-map', //源码映射,会单独生成一个sourcemap文件，出错了会标识当前报错的行和列（大且全）
+    // devtool: 'eval-source-map', //不会产生单独的文件,可以显示行和列
+    // devtool: 'cheap-module-source-map', //不会产生列，但是是一个单独的映射文件，用的不多
+    // devtool: 'cheap-module-eval-source-map', //不会产生文件，集成在打包文件中，不会产生列
+
     // 插件的使用顺序没有先后
     plugins: [
       new HtmlWebpackPlugin({ // 根据./index.html模版生成打包目录下的index.html，并自动注入bundle.js
