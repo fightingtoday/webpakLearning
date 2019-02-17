@@ -26,7 +26,8 @@ module.exports = {
     entry: './src/index.js', //入口
     output: {
       filename: 'bundle[hash:8].js', // 打包后的文件名,加入hash值只显示8位
-      path: path.resolve(__dirname, 'build') // 路径必须是觉得路径
+      path: path.resolve(__dirname, 'build'), // 路径必须是觉得路径
+      // publicPath: 'http://www.zhufengpeixun.cn' //资源都会放在publicPath下，可用于将资源放在cdn下
     },
     // 插件的使用顺序没有先后
     plugins: [
@@ -40,7 +41,7 @@ module.exports = {
           hash:true,
       }),
       new MiniCssExtractPlugin({
-          filrname: 'main.css'
+          filrname: 'css/main.css'
       }),
       new webpack.ProvidePlugin({ // 在每个模块中都注入$，全局没有
         $: 'jquery'
@@ -77,8 +78,10 @@ module.exports = {
           use: {
             loader: 'url-loader',
             options: {
-              limit: 200*1024
-            }
+              limit: 1,
+              outputPath: '/img/',
+              publicPath: 'http:www.zhuf.cn' //只在图片下加
+            }       
           }
         },
         {

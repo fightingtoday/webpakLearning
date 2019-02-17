@@ -61,3 +61,6 @@
 - 2）css中引入
 - 3）html中src引入 npm i html-withimg-loader
 - 4) 将图片转换成base64 npm i url-loader
+
+## 打包文件分类
+- publicPath
