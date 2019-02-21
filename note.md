@@ -117,3 +117,13 @@ app.listen(3000)
 new webpack.DefinePlugin({ 
         DEV: JSON.stringify('dev') // 定义环境变量
       }),
+##区分不同环境
+- 不同环境使用不同的配置文件，安装webpack-merge，可讲基础配置文件和不同环境的配置文件结合
+let { smart } = require('webpack-merge')
+let base = require('./webpack.base.js')
+
+module.exports = smart(base, {
+    mode: 'development',
+    devServer: {},
+    
+})
