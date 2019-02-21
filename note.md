@@ -135,4 +135,12 @@ module.exports = smart(base, {
       // loder
       rules:[
 
-- 2）
+- 2）     {
+          test: /.js$/,
+          exclude:/node_modules/, // 不解析node_modules下的js文件
+          include: path.resolve('src'), // 只解析src下的js文件
+          use:{
+            loader: 'babel-loader',
+            options: {
+              presets
+- 3  已moment包为例,只用了其中的一个方法，所引入的包却很大，moment中有不同版本的语言包，若只用中文的，就不需要全部引入所有语言吧，而是自己单独引用中文语言包，可以受用webpack的自带插件，new webpack.IgnorePlugin(/\.\/locale/, /moment/

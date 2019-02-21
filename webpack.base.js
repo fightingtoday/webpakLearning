@@ -127,6 +127,8 @@ module.exports = {
         },
         {
           test: /.js$/,
+          exclude:/node_modules/, // 不解析node_modules下的js文件
+          include: path.resolve('src'), // 只解析src下的js文件
           use:{
             loader: 'babel-loader',
             options: {
