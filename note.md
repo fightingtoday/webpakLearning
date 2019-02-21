@@ -103,3 +103,11 @@ app.get('api/user', (res,req)=> {
 app.listen(3000)
 
 然后node service.js（本地没生效）
+## resolve属性的配置
+-  resolve: { // 解析第三方包
+      modules: [path.resolve('node_modules')],
+      // mainFiles:['style, main'], // 主文件
+      // alias:{ // 别名 vue vue.runtime
+        extensions: ['.js', '.css', '.vue'] //导入文件未写后缀时，查找的顺序
+      // }
+    },

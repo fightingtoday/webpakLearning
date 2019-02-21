@@ -8,6 +8,13 @@ let CleanWebpackPlugin = require('clean-webpack-plugin')
 let CopyWebpackPlugin = require('copy-webpack-plugin')
 let webpack = require('webpack')
 module.exports = {
+    // resolve: { // 解析第三方包
+      // modules: [path.resolve('node_modules')],
+      // mainFiles:['style, main'], // 主文件
+      // alias:{ // 别名 vue vue.runtime
+        // extensions: ['.js', '.css', '.vue'] //导入文件未写后缀时，查找的顺序
+      // }
+    // },
     devServer: { // 开发服务器的配置
         port: 8182,
         progress: true,
@@ -69,7 +76,7 @@ module.exports = {
       new webpack.ProvidePlugin({ // 在每个模块中都注入$，全局没有
         $: 'jquery'
       }),
-      // new CleanWebpackPlugin ('./build'),
+      new CleanWebpackPlugin ('./build'),
       new CopyWebpackPlugin ([
         {from: './doc', to:'./'}
       ]),
