@@ -127,3 +127,12 @@ module.exports = smart(base, {
     devServer: {},
     
 })
+
+## webpack优化项
+- 1） noparse 
+    module: { // 模块
+      noParse: /jquery/, // 不去解析jquery中的依赖库（若知道某哥包并没有依赖项就可以这样做）
+      // loder
+      rules:[
+
+- 2）
