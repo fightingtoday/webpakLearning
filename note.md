@@ -110,4 +110,10 @@ app.listen(3000)
       // alias:{ // 别名 vue vue.runtime
         extensions: ['.js', '.css', '.vue'] //导入文件未写后缀时，查找的顺序
       // }
-    },
+    }
+
+##定义环境变量
+- webpack自带插件 
+new webpack.DefinePlugin({ 
+        DEV: JSON.stringify('dev') // 定义环境变量
+      }),

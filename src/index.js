@@ -1,11 +1,15 @@
-
-
-let xhr = new XMLHttpRequest();
-xhr.open('GET', '/api/user', true)
-xhr.onload = function () {
-    console.log(xhr.response)
+if( DEV === 'dev'){
+ console.log(111)
+} else {
+    console.log(222) 
 }
-xhr.send();
+
+// let xhr = new XMLHttpRequest();
+// xhr.open('GET', '/api/user', true)
+// xhr.onload = function () {
+//     console.log(xhr.response)
+// }
+// xhr.send();
 // webpack打包我们的图片
 // 1）在js中引入
 // file-loader默认会在内部生成一张图片放在build目录下

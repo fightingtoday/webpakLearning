@@ -7,6 +7,7 @@ let UglifyjsPlugin = require('uglifyjs-webpack-plugin')
 let CleanWebpackPlugin = require('clean-webpack-plugin')
 let CopyWebpackPlugin = require('copy-webpack-plugin')
 let webpack = require('webpack')
+
 module.exports = {
     // resolve: { // 解析第三方包
       // modules: [path.resolve('node_modules')],
@@ -61,6 +62,9 @@ module.exports = {
     // },
     // 插件的使用顺序没有先后
     plugins: [
+      new webpack.DefinePlugin({ 
+        DEV: JSON.stringify('dev') // 定义环境变量
+      }),
       new HtmlWebpackPlugin({ // 根据./index.html模版生成打包目录下的index.html，并自动注入bundle.js
           template: './src/index.html',
           filename: 'index.html',
