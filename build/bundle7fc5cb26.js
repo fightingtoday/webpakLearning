@@ -1,4 +1,4 @@
-/*! mack 2019 bu wangcui */
+/*! make 2019 bu wangcui */
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -87,55 +87,35 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/404bg.png":
-/*!***********************!*\
-  !*** ./src/404bg.png ***!
-  \***********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "/img/daf730901e3e0b722cfc97c14777642d.png";
-
-/***/ }),
-
-/***/ "./src/index.css":
-/*!***********************!*\
-  !*** ./src/index.css ***!
-  \***********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _404bg_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./404bg.png */ "./src/404bg.png");
-/* harmony import */ var _404bg_png__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_404bg_png__WEBPACK_IMPORTED_MODULE_0__);
-// webpack打包我们的图片
+var xhr = new XMLHttpRequest();
+xhr.open('GET', '/api/user', true);
+
+xhr.onload = function () {
+  console.log(xhr.response);
+};
+
+xhr.send(); // webpack打包我们的图片
 // 1）在js中引入
 // file-loader默认会在内部生成一张图片放在build目录下
- // 把图片引入，饭回的结果是一个新的图片地址
-
-var image = new Image();
-image.src = _404bg_png__WEBPACK_IMPORTED_MODULE_0___default.a;
-document.body.appendChild(image); // import $ from "jquery"
+// import img from './404bg.png' // 把图片引入，饭回的结果是一个新的图片地址
+// let image = new Image()
+// image.src = img
+// document.body.appendChild(image)
+// import $ from "jquery"
 // console.log($)
 // let str = require('./a.js')
 // require('@babel/polyfill')
 // console.log(str)
-
-__webpack_require__(/*! ./index.css */ "./src/index.css");
-
-console.log(111); // require('./index.less')
+// require('./index.css')
+// console.log(111)
+// require('./index.less')
 // let a = () => {
 //     return 2
 // }
@@ -154,4 +134,4 @@ console.log(111); // require('./index.less')
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle1ac27977.js.map
+//# sourceMappingURL=bundle7fc5cb26.js.map

@@ -75,3 +75,31 @@
 - 1）cleanWebpackPlugin （第三方） // 每次打包的时候清空输出文件夹（build文件夹）
 - 2) copyWebpackPlugin（第三方） // 进行文件复制
 - 3) bannerPlugin (webpack内置) // 版权声明插件
+
+## webpack实现跨域(三种方式)
+- 1）proxy代理
+proxy: {
+         '/api': 'http://localhost:3000' // 配置了一个代理
+       }
+- 2）前端只想mock数据(端时不需要服务方)
+before(app){
+          app.get('/api/user', (req,res) => {
+           res.json({name: '我在认证学子'})
+           })
+        }
+- 3) 有服务端，不用代理来处理，通过服务端启动webpack，这样前后端就不存在跨域了，代码如下
+let express = require('express')
+
+let app = express()
+let webpack = require('webpack')
+let middle = require('webpack-dev-middleware')
+let config = require('./webpack.config.js')
+let compiler = webpack(config)
+app.use(middle(compiler))
+app.get('api/user', (res,req)=> {
+  res.json({name: '我在学习'})
+})
+
+app.listen(3000)
+
+然后node service.js（本地没生效）

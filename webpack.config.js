@@ -12,7 +12,18 @@ module.exports = {
         port: 8182,
         progress: true,
         contentBase: './build',
-        compress: true
+        compress: true,
+        // 1) 代理 （需要起服务）
+        // proxy: {
+        //   '/api': 'http://localhost:3000' // 配置了一个代理
+        // }
+        // 2） 前端只想mock数据(端时不需要服务方)
+        // before(app){
+        //   app.get('/api/user', (req,res) => {
+        //     res.json({name: '我在认证学子'})
+        //   })
+        // }
+        // 3）有服务端，不用代理来处理，服务端启动webpack
     },
     optimization: { //优化项
       minimizer: [
@@ -35,12 +46,12 @@ module.exports = {
     // devtool: 'eval-source-map', //不会产生单独的文件,可以显示行和列
     // devtool: 'cheap-module-source-map', //不会产生列，但是是一个单独的映射文件，用的不多
     // devtool: 'cheap-module-eval-source-map', //不会产生文件，集成在打包文件中，不会产生列
-    watch: true, //实时编译
-    watchOptions: {
-      poll: 1000, //每秒问我1000次
-      aggregateTimeout: 500, //防抖，输入代码完成后500ms开始打包
-      ignored: /node_modules/ //不需要监控哪个文件
-    },
+    // watch: true, //实时编译
+    // watchOptions: {
+    //   poll: 1000, //每秒问我1000次
+    //   aggregateTimeout: 500, //防抖，输入代码完成后500ms开始打包
+    //   ignored: /node_modules/ //不需要监控哪个文件
+    // },
     // 插件的使用顺序没有先后
     plugins: [
       new HtmlWebpackPlugin({ // 根据./index.html模版生成打包目录下的index.html，并自动注入bundle.js
@@ -58,7 +69,7 @@ module.exports = {
       new webpack.ProvidePlugin({ // 在每个模块中都注入$，全局没有
         $: 'jquery'
       }),
-      new CleanWebpackPlugin ('./build'),
+      // new CleanWebpackPlugin ('./build'),
       new CopyWebpackPlugin ([
         {from: './doc', to:'./'}
       ]),
