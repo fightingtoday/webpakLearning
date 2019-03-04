@@ -144,3 +144,57 @@ module.exports = smart(base, {
             options: {
               presets
 - 3  已moment包为例,只用了其中的一个方法，所引入的包却很大，moment中有不同版本的语言包，若只用中文的，就不需要全部引入所有语言吧，而是自己单独引用中文语言包，可以受用webpack的自带插件，new webpack.IgnorePlugin(/\.\/locale/, /moment/
+
+## webpack自带优化项
+- import 在生产环境下，会自动去除掉没用的代码，叫tree-shaking 把没用到的代码去掉，得是import方式
+- scope hosting 作用域提升
+
+## 抽取公共代码
+- 非单页应用可以使用这项优化
+optimization: {
+  splitChunks: { // 分割代码块
+    cacheGroups: { //缓存组
+      common: { // 公共的模块
+        chunks: 'initial',
+        minSize: 0,
+        minChunks: 2,
+      },
+      // 第三方代码抽离
+      vendor:{
+        priority: 1, //权重
+        test:/node_modules/,
+        chunks: 'initial',
+        minSize: 0,
+        minChunks: 2,
+      }
+    }
+  }
+}
+## 懒加载
+- // es6草案中的语法，支持加载文件
+- npm i  @babel/plugin-syntax-dynamic-import -D
+- plugin : [
+  '@babel/plugin-syntax-dynamic-import'
+]
+- import ('./a.js').then(data => {
+  console.log(data.default) // 默认在default下
+})
+- vue react 路由懒加载
+  
+## 热更新
+- devServer: {
+  hot: true
+}
+- plugins:[
+  new webpack.NameModulesPlugin() //打印更新的模块路径
+  new webpack.HotModuleReplacementPlugin() //热更新插件
+]
+
+- import str from './a.js'
+- console.log(str)
+- if(module.hot){
+  module.hot.accept('./a.js',()=>{
+    let str = require('./a.js)
+    console.log(str)
+  })
+}

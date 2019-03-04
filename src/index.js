@@ -1,8 +1,10 @@
-if( DEV === 'dev'){
- console.log(111)
-} else {
-    console.log(222) 
-}
+
+
+// if( DEV === 'dev'){
+//  console.log(111)
+// } else {
+//     console.log(222) 
+// }
 
 // let xhr = new XMLHttpRequest();
 // xhr.open('GET', '/api/user', true)
