@@ -1,0 +1,14 @@
+{
+  "name": "wangcui-pack1",
+  "version": "1.0.0",
+  "description": "webpack简易实现",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "wangcui",
+  "license": "ISC",
+  "bin": {
+    "wangcui-pack": "./bin/wangcui-pack.js"
+  }
+}
