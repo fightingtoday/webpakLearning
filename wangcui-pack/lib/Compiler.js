@@ -25,8 +25,27 @@ class Compiler {
     }
     // 获取源码
     getSource (modulePath) {
-        let content = fs.readFileSync(modulePath, 'utf8')
-        return content
+      let rules = this.config.module.rules;
+      let content = fs.readFileSync(modulePath, 'utf8')
+      // 拿到每个规则来处理
+      for(let i = 0; i < rules.length; i++){
+        let rule = rules[i]
+        let { test, use } = rule
+        let len = use.length - 1
+        if (test.test(modulePath)) { //这个模块需要通过loader来转化
+          // loader获取对应的loader函数
+          function normalLoader() {
+            let loader = require(use[len--]);
+            content=loader(content)
+            // 递归调用loader 实现转化功能
+            if(len>=0){
+              normalLoader()
+            }
+          }
+          normalLoader()
+        }
+      }
+      return content
     }
     // 解析源码
     parse (source, parentPath) { // AST解析语法树
