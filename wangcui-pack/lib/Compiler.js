@@ -11,6 +11,8 @@ let generator = require('@babel/generator').default
 
 let ejs = require('ejs')
 
+let { SyncHook } = require('tapable')
+
 
 class Compiler {
     constructor(config) {
@@ -22,6 +24,25 @@ class Compiler {
       this.entry = config.entry; //入口文件路径
       // 工作路径
       this.root = process.cwd()
+      this.hooks = {
+        entryOption: new SyncHook(),
+        compile: new SyncHook(),
+        afterCompile: new SyncHook(),
+        afterPlugin: new SyncHook(),
+        run: new SyncHook(),
+        emit: new SyncHook(),
+        done: new SyncHook()
+      }
+      // 如果传递了plugins参数
+      let plugins = this.config.plugins;
+      console.log(plugins)
+      if (Array.isArray(plugins)) {
+        plugins.forEach(plugin=>{
+          console.log(plugin)
+          plugin.apply(this)
+        })
+      }
+      this.hooks.afterPlugin.call()
     }
     // 获取源码
     getSource (modulePath) {
@@ -60,7 +81,7 @@ class Compiler {
             let moduleName = node.arguments[0].value; // 取到的就是模块引用的名字
             moduleName = moduleName + (path.extname(moduleName)? '': '.js');
             moduleName = './' + path.join(parentPath, moduleName); // 'src/a.js'
-            console.log(moduleName)
+            // console.log(moduleName)
             dependencies.push(moduleName)
             node.arguments = [t.stringLiteral(moduleName)] //改源码
           }
@@ -75,7 +96,7 @@ class Compiler {
     let source = this.getSource(modulePath)
     // 模块id modulePath = modulePath - this.root
     let moduleName = './' + path.relative(this.root, modulePath)
-    console.log(moduleName)
+    // console.log(moduleName)
     // console.log(source, moduleName)
     if (isEntry) {
         this.entryId = moduleName; //保存入口
@@ -106,10 +127,14 @@ class Compiler {
     }
     run () {
       // 执行，并且创建模块的依赖关系
+      this.hooks.compile.call()
       this.buildModule(path.resolve(this.root,this.entry), true)
+      this.hooks.afterCompile.call()
       // console.log(this.modules, this.entryId)
       // 发射一个文件（打包后的文件）
       this.emitFile();
+      this.hooks.emit.call()
+
     }
 }
 module.exports = Compiler
